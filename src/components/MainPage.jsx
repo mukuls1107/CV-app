@@ -3,7 +3,9 @@ import '../styles/MainPage.css'
 function MainPage() {
   return (
     <>
-      <h1>THis is main page</h1>
+      <h1 className="intro-title">
+              <span className="title-line">Work In Progress...</span>
+            </h1>
     </>
   );
 }

@@ -26,14 +26,14 @@ function App() {
               Free, powerful, and tailored for developers.
             </p>
             <button className="cta-button" onClick={handleButtonClick}>Build Your Resume</button>
-            <div className="code-element closing-tag">&lt;/dev&gt;</div>
+            <div className="code-element closing-tag">&lt;dev /&gt;</div>
           </div>
           <div className="background-element"></div>
           <div className="floating-elements">
             <span className="float-item">{}</span>
             <span className="float-item">[]</span>
             <span className="float-item">()</span>
-            <span className="float-item">&lt;/&gt;</span>
+            <span className="float-item">&lt;&#47;&gt;</span>
           </div>
         </div>
       )}
