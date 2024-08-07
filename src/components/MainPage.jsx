@@ -1,3 +1,5 @@
+import '../styles/MainPage.css'
+
 function MainPage() {
   return (
     <>
