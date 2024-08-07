@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../styles/MainPage.css";
 import "../styles/ResumeStyle.css";
-import htmlToPdf, { html2pdf } from "html2pdf.js";
+import html2pdf from 'html2pdf.js';
+
 
 function MainPage() {
   const [formData, setFormData] = useState({
@@ -23,35 +24,41 @@ function MainPage() {
 
   const generateResume = () => {
     const resumeHTML = `
-      <style>
-        ${document.getElementById('resume-style').innerHTML}
-      </style>
+        <link rel="stylesheet" href="./src/styles/ResumeStyle.css" id="resume-style" />
       <div class="resume">
         <h1>${formData.fullName}</h1>
         <p>${formData.email} | ${formData.phone}</p>
         <h2>Professional Summary</h2>
         <p>${formData.summary}</p>
         <h2>Education</h2>
-        ${formData.education.map(edu => `
+        ${formData.education
+          .map(
+            (edu) => `
           <p><strong>${edu.degree}</strong>, ${edu.institution}, ${edu.graduationYear}</p>
-        `).join('')}
+        `
+          )
+          .join("")}
         <h2>Work Experience</h2>
-        ${formData.workExperience.map(exp => `
+        ${formData.workExperience
+          .map(
+            (exp) => `
           <p><strong>${exp.position}</strong>, ${exp.company} (${exp.startDate} - ${exp.endDate})</p>
           <p>${exp.description}</p>
-        `).join('')}
+        `
+          )
+          .join("")}
       </div>
     `;
 
-    // const opt = {
-    //   margin: 1,
-    //   filename: "resume.pdf",
-    //   image: { type: "pdf", quality: 0.98 },
-    //   html2canvas: { scale: 2 },
-    //   jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    // };
+    const opt = {
+      margin: 1,
+      filename: "resume.pdf",
+      image: { type: "pdf", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
 
-    html2pdf().from(resumeHTML).toPdf().save("resume.pdf");
+    html2pdf().set(opt).from(resumeHTML).save();
   };
 
   const handleChange = (e, index, section) => {
@@ -209,7 +216,7 @@ function MainPage() {
           </button>
         </section>
 
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="submit-btn" onSubmit={handleSubmit}>
           Generate Resume
         </button>
       </form>
