@@ -10,7 +10,7 @@ Developer Story is a web application designed to help developers create standout
 - Tailor your resume to highlight your technical skills
 - Free to use with powerful tools to make your resume shine
 
-## The project is build using React and Build with Vite
+## The project is built using React and Vite
 
 ## Installation
 
