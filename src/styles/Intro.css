@@ -126,25 +126,25 @@ body {
 
 .float-item:nth-child(1) {
   top: 10%;
-  left: 10%;
+  left: 40%;
   animation-duration: 17s;
 }
 
 .float-item:nth-child(2) {
   top: 20%;
-  right: 10%;
+  right: 20%;
   animation-duration: 21s;
 }
 
 .float-item:nth-child(3) {
   bottom: 15%;
-  left: 15%;
+  left: 35%;
   animation-duration: 19s;
 }
 
 .float-item:nth-child(4) {
   bottom: 20%;
-  right: 20%;
+  right: 40%;
   animation-duration: 23s;
 }
 
