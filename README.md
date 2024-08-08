@@ -1,19 +1,18 @@
-# Developer Story
+# 📋 Developer Story
 
-## Introduction
+## 🚀 Introduction
 
 Developer Story is a web application designed to help developers create standout resumes/CVs that speak the language of tech. It's free, powerful, and tailored specifically for developers.
 
-## Features
+## 🎨 Features
 
-- Craft your developer story with an intuitive interface
-- Tailor your resume to highlight your technical skills
-- Free to use with powerful tools to make your resume shine
+- 🖍️ Craft your developer story with an intuitive interface
+- 🎯 Tailor your resume to highlight your technical skills
+- 💰 Free to use with powerful tools to make your resume shine
 
-## The project is built using React and Vite
+## 🛠️ The project is built using React and Vite
 
-## Installation
-
+## 🛠️ Installation
 1. Clone the repository:
 
 ```bash
@@ -38,7 +37,7 @@ npm run dev
 4. Open your browser and navigate to `http://localhost:5173` to see the application in action. (default port for the vite)
 
 
-## Contributing
+## 🤝 Contributing
 1. Fork the repository
 2. Create a new branch: git checkout -b my-feature-branch
 3. Make your changes
@@ -46,7 +45,7 @@ npm run dev
 5. Push to the branch: git push origin my-feature-branch
 6. Submit a pull request
 
-## Connect With Me
+## 💬 Connect With Me
 
 Stay updated on Dev Story's development and engage on social media:
 
