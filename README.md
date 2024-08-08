@@ -18,7 +18,7 @@ Developer Story is a web application designed to help developers create standout
 ```bash
 git clone https://github.com/mukuls1107/CV-app.git
 
-cd developer-story
+cd CV-app
 
 ```
 
