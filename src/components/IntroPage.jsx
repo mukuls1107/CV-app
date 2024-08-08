@@ -39,6 +39,7 @@ function IntroPage() {
           <div className="background-element"></div>
         </div>
       )}
+  
     </div>
   );
 }

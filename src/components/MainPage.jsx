@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../styles/MainPage.css";
 import "../styles/ResumeStyle.css";
+import "../styles/Footer.css"
 import html2pdf from "html2pdf.js";
+import Footer from "./Footer.jsx";
 
 function MainPage() {
   const [formData, setFormData] = useState({
@@ -293,6 +295,7 @@ function MainPage() {
           Generate Resume
         </button>
       </form>
+      <Footer />
     </div>
   );
 }
