@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Feedback.css";
-import axios from "axios";
 import sendFeedbackToDiscord from "../utils/discordWebhook";
-const DISCORD_WEBHOOK_URL = import.meta.env.VITE_WEBHOOK_URL;
+
 
 const Feedback = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);

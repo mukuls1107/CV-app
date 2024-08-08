@@ -97,7 +97,6 @@ body {
   padding: 0.8rem 1.5rem !important;
 }
 
-/* Reuse the floating elements styles from your intro page */
 .floating-elements {
   position: absolute;
   top: 0;

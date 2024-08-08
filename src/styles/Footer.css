@@ -21,7 +21,7 @@
   animation: open-paper 0.5s ease-in-out forwards;
   font-family: 'Quicksand', sans-serif;
   color: var(--color-text);
-  z-index: 999; /* Add this line to make the feedback form appear on top */
+  z-index: 999; 
 }
 
 .feedback-form {
