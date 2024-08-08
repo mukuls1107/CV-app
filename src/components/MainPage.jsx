@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../styles/MainPage.css";
 import "../styles/ResumeStyle.css";
-import "../styles/Footer.css"
+import "../styles/Footer.css";
 import html2pdf from "html2pdf.js";
 import Footer from "./Footer.jsx";
+import Feedback from "./Feedback.jsx";
 
 function MainPage() {
+  const [showMainPage, showFeedbackPage] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -31,6 +33,10 @@ function MainPage() {
       },
     ],
   });
+
+  const handleFeedback = () => {
+    showFeedbackPage(true);
+  };
 
   const generateResume = () => {
     const resumeHTML = `
@@ -291,11 +297,17 @@ function MainPage() {
           </button>
         </section>
 
-        <button type="submit" className="submit-btn" onSubmit={handleSubmit}>
+        <button
+          type="submit"
+          className="submit-btn"
+          onSubmit={handleSubmit}
+          onClick={handleFeedback}
+        >
           Generate Resume
         </button>
       </form>
       <Footer />
+      {showFeedbackPage && <Feedback />}
     </div>
   );
 }

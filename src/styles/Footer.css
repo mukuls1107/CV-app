@@ -1,70 +1,116 @@
-.footer {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    padding: 2rem 1rem;
-    text-align: center;
-    font-size: 1rem;
-    width: 100%;
-    margin-top: 2rem;
-    position: relative;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap');
+
+:root {
+  --color-bg: #f0e6ef;
+  --color-text: #2e294e;
+  --color-highlight: #8661c1;
+  --color-secondary: #6e5494;
+}
+.feedback-form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform-origin: center center;
+  animation: open-paper 0.5s ease-in-out forwards;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--color-text);
+  z-index: 999; /* Add this line to make the feedback form appear on top */
+}
+
+.feedback-form {
+  padding: 2rem;
+}
+
+.feedback-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-highlight);
+}
+
+.feedback-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feedback-rating,
+.feedback-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.feedback-label {
+  font-size: 1rem;
+  color: var(--color-secondary);
+}
+
+.feedback-input {
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-secondary);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.feedback-input::placeholder {
+  color: rgba(var(--color-text), 0.5);
+}
+
+.feedback-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.feedback-submit-btn {
+  background-color: var(--color-highlight);
+  color: var(--color-bg);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-submit-btn:hover {
+  background-color: var(--color-secondary);
+}
+
+.feedback-toggle-btn {
+  background-color: var(--color-highlight);
+  color: var(--color-bg);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-toggle-btn:hover {
+  background-color: var(--color-secondary);
+}
+
+@keyframes open-paper {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
   }
-  
-  .footer-content {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
   }
-  
-  .footer-link {
-    color: var(--color-highlight);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    margin-bottom: 1rem;
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
   }
-  
-  .footer-link:hover {
-    color: var(--color-secondary);
-  }
-  
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: -2rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .footer-icon {
-    background-color: var(--color-highlight);
-    color: var(--color-bg);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 0.5rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .footer-icon:hover {
-    background-color: var(--color-secondary);
-  }
-  
-  @media (max-width: 768px) {
-    .footer {
-      padding: 2.5rem 1rem 1.5rem;
-    }
-  
-    .footer-icons {
-      top: -1.5rem;
-    }
-  
-    .footer-icon {
-      width: 35px;
-      height: 35px;
-    }
-  }
+}
