@@ -7,7 +7,7 @@ import Footer from "./Footer.jsx";
 import Feedback from "./Feedback.jsx";
 
 function MainPage() {
-  // const [showMainPage, showFeedbackPage] = useState(false);
+  const [showMainPage, showFeedbackPage] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -307,7 +307,7 @@ function MainPage() {
         </button>
       </form>
       <Footer />
-      {showFeedbackPage && <Feedback />}
+      {/* {showFeedbackPage && <Feedback />} */}
     </div>
   );
 }
