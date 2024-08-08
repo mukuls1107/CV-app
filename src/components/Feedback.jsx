@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Feedback.css";
 import axios from "axios";
-
+import sendFeedbackToDiscord from "../utils/discordWebhook";
 const DISCORD_WEBHOOK_URL = import.meta.env.VITE_WEBHOOK_URL;
 
 const Feedback = () => {
@@ -18,26 +18,36 @@ const Feedback = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await sendFeedbackToDiscord({ username, likes, features, rating, comment });
-    alert("Thanks For The Feedback :)");
-    setIsFormVisible(false);
-    setUsername("");
-    setLikes("");
-    setFeatures("");
-    setRating("");
-    setComment("");
-  };
-
-  const sendFeedbackToDiscord = async (feedback) => {
     try {
-      await axios.post(DISCORD_WEBHOOK_URL, {
-        username: "Feedback",
-        content: `New Feedback:\nName: **${feedback.username}**\nRating: **${feedback.rating}**\nComment: **${feedback.comment}**\nFeature Wanted: **${feedback.features}**\nLikes: **${feedback.likes}**`,
+      await sendFeedbackToDiscord({
+        username,
+        likes,
+        features,
+        rating,
+        comment,
       });
+      alert("Thanks For The Feedback :)");
+      setIsFormVisible(false);
+      setUsername("");
+      setLikes("");
+      setFeatures("");
+      setRating("");
+      setComment("");
     } catch (error) {
-      console.error("Error sending feedback to Discord:", error);
+      alert("Failed to send the feedback :(");
     }
   };
+
+  //   const sendFeedbackToDiscord = async (feedback) => {
+  //     try {
+  //       await axios.post(DISCORD_WEBHOOK_URL, {
+  //         username: "Feedback",
+  //         content: `====== New Feedback =====\nName: **${feedback.username}**\nRating: **${feedback.rating}**\nComment: **${feedback.comment}**\nFeature Wanted: **${feedback.features}**\nLikes: **${feedback.likes}**`,
+  //       });
+  //     } catch (error) {
+  //       console.error("Error sending feedback to Discord:", error);
+  //     }
+  //   };
 
   return (
     <div>
