@@ -75,7 +75,7 @@
   }
   
   .feedback-toggle-btn {
-    background-color: #007bff;
+    background-color: #8661c1;
     color: #ffffff;
     margin-top: 0.8rem;
     padding: 0.5rem 1.3rem;
@@ -87,7 +87,7 @@
   }
   
   .feedback-toggle-btn:hover {
-    background-color: #0056b3;
+    background-color: #6e5494;
   }
   
   @keyframes open-paper {
