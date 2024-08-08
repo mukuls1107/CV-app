@@ -307,7 +307,7 @@ function MainPage() {
         </button>
       </form>
       <Footer />
-      {/* {showFeedbackPage && <Feedback />} */}
+      {showFeedbackPage && <Feedback />}
     </div>
   );
 }
