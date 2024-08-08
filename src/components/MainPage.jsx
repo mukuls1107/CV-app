@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../styles/MainPage.css";
 import "../styles/ResumeStyle.css";
-import html2pdf from 'html2pdf.js';
-
+import html2pdf from "html2pdf.js";
 
 function MainPage() {
   const [formData, setFormData] = useState({
@@ -11,6 +10,15 @@ function MainPage() {
     phone: "",
     summary: "",
     education: [{ institution: "", degree: "", graduationYear: "" }],
+    projects: [
+      {
+        name: "",
+        startDate: "",
+        endDate: "",
+        techStack: "",
+        description: "",
+      },
+    ],
     workExperience: [
       {
         company: "",
@@ -24,31 +32,50 @@ function MainPage() {
 
   const generateResume = () => {
     const resumeHTML = `
-        <link rel="stylesheet" href="./src/styles/ResumeStyle.css" id="resume-style" />
-      <div class="resume">
-        <h1>${formData.fullName}</h1>
-        <p>${formData.email} | ${formData.phone}</p>
-        <h2>Professional Summary</h2>
-        <p>${formData.summary}</p>
-        <h2>Education</h2>
-        ${formData.education
-          .map(
-            (edu) => `
-          <p><strong>${edu.degree}</strong>, ${edu.institution}, ${edu.graduationYear}</p>
+    <div class="resume">
+      <h1>${formData.fullName}</h1>
+      <p>${formData.email} | ${formData.phone}</p>
+
+      <h2>Professional Summary</h2>
+      <p>${formData.summary}</p>
+
+      <h2>Education</h2>
+      ${formData.education
+        .map(
+          (edu) => `
+          <div class="education-item">
+            <p><strong>${edu.degree}</strong>, ${edu.institution} (${edu.graduationYear})</p>
+          </div>
         `
-          )
-          .join("")}
-        <h2>Work Experience</h2>
-        ${formData.workExperience
-          .map(
-            (exp) => `
-          <p><strong>${exp.position}</strong>, ${exp.company} (${exp.startDate} - ${exp.endDate})</p>
-          <p>${exp.description}</p>
+        )
+        .join("")}
+
+      <h2>Projects</h2>
+      ${formData.projects
+        .map(
+          (project) => `
+          <div class="project-item">
+            <p><strong>${project.name}</strong> (${project.startDate} - ${project.endDate})</p>
+            <p>${project.description}</p>
+            <p>Technology Used: <strong>${project.techStack}</strong></p>
+          </div>
         `
-          )
-          .join("")}
-      </div>
-    `;
+        )
+        .join("")}
+
+      <h2>Work Experience</h2>
+      ${formData.workExperience
+        .map(
+          (exp) => `
+          <div class="work-item">
+            <p><strong>${exp.position}</strong>, ${exp.company} (${exp.startDate} - ${exp.endDate})</p>
+            <p>${exp.description}</p>
+          </div>
+        `
+        )
+        .join("")}
+    </div>
+  `;
 
     const opt = {
       margin: 1,
@@ -168,6 +195,52 @@ function MainPage() {
           ))}
           <button type="button" onClick={() => addSection("education")}>
             Add Education
+          </button>
+        </section>
+
+        <section>
+          <h3>Projects</h3>
+          {formData.projects.map((exp, index) => (
+            <div key={index}>
+              <input
+                type="text"
+                name="name"
+                value={exp.name}
+                onChange={(e) => handleChange(e, index, "projects")}
+                placeholder="Name"
+              />
+              <input
+                type="text"
+                name="startDate"
+                value={exp.startDate}
+                onChange={(e) => handleChange(e, index, "projects")}
+                placeholder="Start Date"
+              />
+              <input
+                type="text"
+                name="endDate"
+                value={exp.endDate}
+                onChange={(e) => handleChange(e, index, "projects")}
+                placeholder="End Date"
+              />
+
+              <input
+                type="text"
+                name="techStack"
+                value={exp.techStack}
+                onChange={(e) => handleChange(e, index, "projects")}
+                placeholder="Technology Used"
+              />
+              <textarea
+                name="description"
+                value={exp.description}
+                onChange={(e) => handleChange(e, index, "projects")}
+                placeholder="Describe Your Project"
+              ></textarea>
+            </div>
+          ))}
+          <button type="button" onClick={() => addSection("projects")}>
+            Add Another Project
           </button>
         </section>
 

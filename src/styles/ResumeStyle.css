@@ -1,28 +1,55 @@
 .resume {
-    font-family: 'Arial', sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: #ffffff;
-    color: #333333;
-  }
-  
-  .resume h1 {
-    color: #2e294e;
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-  
-  .resume h2 {
-    color: #333;
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #8661c1;
-    padding-bottom: 5px;
-  }
-  
-  .resume p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-  }
+  font-family: 'Arial', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f9f9f9;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.resume h1 {
+  color: #2e294e;
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.resume h2 {
+  color: #333;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #8661c1;
+  padding-bottom: 5px;
+}
+
+.resume p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.education-item,
+.project-item,
+.work-item {
+  margin-bottom: 20px;
+}
+
+.education-item p,
+.project-item p,
+.work-item p {
+  margin: 5px 0;
+}
+
+.project-item p em {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+  font-size: 14px;
+}
+
+.resumeContainer {
+  margin-top: 40px;
+}
