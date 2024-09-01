@@ -7,7 +7,7 @@ import Footer from "./Footer.jsx";
 import Feedback from "./Feedback.jsx";
 
 function MainPage() {
-  const [showMainPage, showFeedbackPage] = useState(false);
+  const [showFeedbackPage, setShowFeedbackPage] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -35,55 +35,56 @@ function MainPage() {
   });
 
   const handleFeedback = () => {
-    showFeedbackPage(true);
+    setShowFeedbackPage(true);
   };
 
   const generateResume = () => {
     const resumeHTML = `
-    <div class="resume">
-      <h1>${formData.fullName}</h1>
-      <p>${formData.email} | ${formData.phone}</p>
+      <div class="resume">
+        <h1>${formData.fullName}</h1>
+        <p style="text-align: center;">
+          ${formData.email} | ${formData.phone} 
+        </p>
 
-      <h2>Professional Summary</h2>
-      <p>${formData.summary}</p>
+        <h2 class="section-title">Education</h2>
+        ${formData.education
+          .map(
+            (edu) => `
+            <div class="education-item">
+              <h3>${edu.institution}</h3>
+              <p class="sub-info">${edu.degree}, ${edu.graduationYear}</p>
+            </div>
+          `
+          )
+          .join("")}
 
-      <h2>Education</h2>
-      ${formData.education
-        .map(
-          (edu) => `
-          <div class="education-item">
-            <p><strong>${edu.degree}</strong>, ${edu.institution} (${edu.graduationYear})</p>
-          </div>
-        `
-        )
-        .join("")}
+        <h2 class="section-title">Experience</h2>
+        ${formData.workExperience
+          .map(
+            (exp) => `
+            <div class="work-item">
+              <h3>${exp.position}</h3>
+              <p class="sub-info">${exp.company} (${exp.startDate} - ${exp.endDate})</p>
+              <p>${exp.description}</p>
+            </div>
+          `
+          )
+          .join("")}
 
-      <h2>Projects</h2>
-      ${formData.projects
-        .map(
-          (project) => `
-          <div class="project-item">
-            <p><strong>${project.name}</strong> (${project.startDate} - ${project.endDate})</p>
-            <p>${project.description}</p>
-            <p>Technology Used: <strong>${project.techStack}</strong></p>
-          </div>
-        `
-        )
-        .join("")}
-
-      <h2>Work Experience</h2>
-      ${formData.workExperience
-        .map(
-          (exp) => `
-          <div class="work-item">
-            <p><strong>${exp.position}</strong>, ${exp.company} (${exp.startDate} - ${exp.endDate})</p>
-            <p>${exp.description}</p>
-          </div>
-        `
-        )
-        .join("")}
-    </div>
-  `;
+        <h2 class="section-title">Projects</h2>
+        ${formData.projects
+          .map(
+            (project) => `
+            <div class="project-item">
+              <h3>${project.name} (${project.startDate} - ${project.endDate})</h3>
+              <p>${project.description}</p>
+              <p><strong>Technology Used:</strong> ${project.techStack}</p>
+            </div>
+          `
+          )
+          .join("")}
+      </div>
+    `;
 
     const opt = {
       margin: 1,
@@ -300,7 +301,6 @@ function MainPage() {
         <button
           type="submit"
           className="submit-btn"
-          onSubmit={handleSubmit}
           onClick={handleFeedback}
         >
           Generate Resume
